@@ -1,0 +1,4 @@
+{
+    "dockerhub-id": "bkzhou/<image>:<tag>",
+    "build-script": "python run.py"
+}
