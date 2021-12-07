@@ -27,7 +27,7 @@ class NeuralNet(torch.nn.Module):
         criterion = nn.MSELoss()
         optimizer = torch.optim.SGD(self.parameters(), lr=learning_rate)
 
-        for i in range(5000):
+        for i in range(20000):
             # optimizer.zero_grad()
             # outputs = self(X.float())
             # loss = criterion(outputs, y.float())
