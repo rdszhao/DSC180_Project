@@ -34,7 +34,7 @@ class NeuralNet(torch.nn.Module):
             # loss.backward()
             # optimizer.step()
             for x_i, y_i in zip(X, y):
-                outputs = model(x_i.float())
+                outputs = self(x_i.float())
                 loss = criterion(outputs, y_i.float())
                 optimizer.zero_grad()
                 loss.backward()
