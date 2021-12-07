@@ -48,8 +48,7 @@ def main(targets):
         
         # default
         data = pickle.load(open('test/testdata/test_data2.p', 'rb'))
-        test = open('test/testdata/test_data1.txt', 'r')
-        output = open('test/output.txt', 'w+')
+        output = open('test/output.p', 'ab')
         table = pickle.load(open('test/testdata/test_data1.p', 'rb'))
 
         # build x and y train
