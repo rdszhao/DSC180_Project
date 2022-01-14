@@ -1,4 +1,3 @@
-# %%
 import sys
 sys.path.append('./Util')
 import numpy as np
@@ -6,13 +5,8 @@ import matplotlib.pyplot as plt
 import matplotlib
 from Mapping import *
 from PCA import *
-from nn import model
 import pickle
-import itertools
-import random
-%load_ext autoreload
-%autoreload 2
-# %%
+
 V5 = pickle.load(open('V5.p','rb'))
 cp_list = V5["cp_list"]
 active_L_table_slide_DOA = V5["active_L_table_slide_DOA"]
@@ -46,7 +40,6 @@ EVENT_LABEL = ['L Table Slide', 'Long Table slide']
 B_MATRIX_NAME = ['Table','Chair','All']
 COLOR_LIST = ['r','b','g']
 MARKER_LIST = ["$1$","$2$","$3$","$4$","$5$","$6$","$7$","$8$","$9$","$10$","$11$"]
-# %%
 # %%
 def generate_points():
     mapped_points = []
@@ -136,4 +129,3 @@ for kk in range(ROOM_COORDINATES.shape[0]):
 ax.legend(markerscale=5,fontsize=15)
 plt.show()
 print(f"lenght: {filtered.shape[0]}")
-# %%
