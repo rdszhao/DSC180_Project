@@ -26,7 +26,7 @@ USER jovyan
 
 # RUN conda install -y scikit-learn
 
-RUN pip install --no-cache-dir etl scipy numpy pandas torch matplotlib
+RUN pip install --no-cache-dir etl scipy numpy pandas torch sklearn matplotlib
 
 # Override command to disable running jupyter notebook at launch
 # CMD ["/bin/bash"]
