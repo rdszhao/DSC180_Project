@@ -18,20 +18,19 @@ X = np.vstack([c for c in cp_list[:4]])
 y = np.vstack([np.full([p.shape[0], len(c)], c) for p, c in zip(control_points, coordinates)])
 # %%
 from sklearn.multioutput import MultiOutputRegressor
+from sklearn.linear_model import LinearRegression
 from sklearn.svm import SVR
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.ensemble import RandomForestRegressor
 # %%
-regr = MultiOutputRegressor(SVR(kernel='rbf'))
-regr.fit(X, y)
+fig, axes = plt.subplots(2, 2)
+axes = axes.flatten()
 # %%
-plt.scatter(*regr.predict(X).T)
-plt.scatter(*regr.predict(active_L_table_slide_DOA).T)
+models = {'linear regression': LinearRegression, 'svr': SVR, 'decision tree': DecisionTreeRegressor, 'random forest': RandomForestRegressor}
+for m, ax in zip(models.items(), axes):
+	regr = MultiOutputRegressor(m[1]())
+	regr.fit(X, y)
+	ax.scatter(*regr.predict(X).T)
+	ax.scatter(*regr.predict(active_L_table_slide_DOA).T, label=m[0])
 # %%
-from sklearn.model_selection import RandomizedSearchCV
-from scipy.stats import reciprocal, uniform
-# %%
-param_distributions = {'estimator__C': uniform(1, 10), 'estimator__gamma': reciprocal(0.001, 0.1)}
-rscv = RandomizedSearchCV(regr, param_distributions, n_iter=10)
-rscv.fit(X, y)
-# %%
-plt.scatter(*rscv.predict(X).T)
-plt.scatter(*rscv.predict(active_L_table_slide_DOA).T)
+fig
