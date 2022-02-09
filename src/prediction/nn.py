@@ -3,7 +3,7 @@ import torch.nn as nn
 
 input_size = 15
 output_size = 2
-hidden_size = 10
+hidden_size = 20
 num_epochs = 2
 learning_rate = 0.001
 
@@ -27,7 +27,7 @@ class NeuralNet(torch.nn.Module):
         criterion = nn.MSELoss()
         optimizer = torch.optim.SGD(self.parameters(), lr=learning_rate)
 
-        for i in range(20000):
+        for i in range(10000):
             for x_i, y_i in zip(X, y):
                 outputs = self(x_i.float())
                 loss = criterion(outputs, y_i.float())
